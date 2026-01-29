@@ -3,21 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="The Best website for unblocked games!">
-  <meta name="keywords" content="Games,Unblocked Games,Unity,WebGL,Unblocked,Google Sites,game hub,unblocked games,games unblocked">
-  <meta name="author" content="YingNetwork">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="description" content="The Best website for unblocked games!">
-  <meta name="keywords" content="Games,Unblocked Games,Unity,WebGL,Unblocked,Google Sites,tyler's game hub,tyler's unblocked games,tyler's games unblocked">
-  <meta name="author" content="Tyler Palko">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>YingHub</title>
-  <link rel="icon" type="image/x-icon" href="resources/favicon.ico">
+  <link rel="icon" href="resources/favicon.ico">
+
   <style>
-    /* General reset */
     * {
       margin: 0;
       padding: 0;
@@ -25,89 +15,139 @@
     }
 
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #0a1a3d, #142850);
-      color: #fff;
+      font-family: "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #102a5e, #020b1f);
+      color: white;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
 
-    .heading {
-      text-align: center;
-      background: #0c2147;
+    header {
+      background: linear-gradient(135deg,#0b1f44,#143b7d);
       padding: 25px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-      border-bottom: 3px solid #1f3f73;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      border-bottom: 2px solid #1e90ff;
     }
 
-    .heading h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #f0f4ff;
+    header h1 {
+      font-size: 2.8rem;
       letter-spacing: 2px;
+      color: #8ac4ff;
+      text-shadow: 0 0 15px #1e90ff;
+    }
+
+    header p {
+      color: #cfe6ff;
+      margin-top: 5px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.6rem;
+      margin: 30px 0 10px;
+      color: #7cc3ff;
+      text-shadow: 0 0 8px #1e90ff;
     }
 
     .game-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 25px;
       padding: 40px;
       max-width: 1400px;
       margin: auto;
-      flex: 1;
     }
 
+    /* Featured tile */
+    .featured {
+      grid-column: span 2;
+      grid-row: span 2;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg,#1e90ff,#0b1f44);
+      box-shadow: 0 0 40px rgba(30,144,255,0.7);
+      transition: transform 0.3s;
+      text-decoration: none;
+      color: white;
+    }
+
+    .featured:hover {
+      transform: scale(1.03);
+    }
+
+    .featured img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+
+    .featured-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+      text-align: center;
+      padding: 20px;
+    }
+
+    .featured-content h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .featured-content span {
+      background: #1e90ff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 0 15px #1e90ff;
+    }
+
+    /* Normal tiles */
     .game-tile {
       position: relative;
-      background: #142850;
-      border-radius: 15px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.4);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      cursor: pointer;
       text-decoration: none;
+      background: linear-gradient(145deg,#0e234a,#07132d);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+      transition: all 0.3s ease;
     }
 
     .game-tile:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.6), 0 0 20px #1e90ff;
+      box-shadow: 0 0 20px #1e90ff, 0 15px 30px rgba(0,0,0,0.8);
     }
 
     .game-tile img {
       width: 100%;
       height: 140px;
       object-fit: cover;
-      border-bottom: 2px solid #1f3f73;
     }
 
     .game-title {
       padding: 12px;
       text-align: center;
-      font-size: 1rem;
+      background: rgba(10,25,60,0.95);
       font-weight: bold;
-      color: #e0e6ff;
-      background: #0e1f3f;
     }
 
-    /* Play overlay */
     .overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(20, 40, 80, 0.8);
-      color: #fff;
+      inset: 0;
+      background: rgba(30,144,255,0.85);
       display: flex;
-      align-items: center;
       justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      align-items: center;
       font-size: 1.3rem;
       font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      opacity: 0;
+      transition: 0.3s;
     }
 
     .game-tile:hover .overlay {
@@ -117,95 +157,327 @@
     footer {
       text-align: center;
       padding: 20px;
-      background: #0c2147;
-      border-top: 2px solid #1f3f73;
+      background: #020b1f;
+      border-top: 2px solid #1e90ff;
+      margin-top: 40px;
     }
 
     footer a {
-      color: #76baff;
+      color: #7cc3ff;
       text-decoration: none;
       margin: 0 10px;
-      transition: color 0.2s ease;
     }
 
     footer a:hover {
-      color: #fff;
+      color: white;
+      text-shadow: 0 0 10px #1e90ff;
+    }
+
+    @media(max-width:900px){
+      .game-grid{
+        grid-template-columns: repeat(2,1fr);
+      }
+      .featured{
+        grid-column: span 2;
+        grid-row: span 1;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="heading">
-    <h1>YingHub</h1>
-  </div>
 
-  <div class="game-grid">
-    <a href="boxingrandom" class="game-tile">
-      <img src="https://i.ytimg.com/vi/Z1MKjS72IWQ/maxresdefault.jpg" alt="Boxing Random">
-      <div class="overlay">Play</div>
-      <div class="game-title">Boxing Random</div>
-    </a>
-    <a href="soccerrandom" class="game-tile">
-      <img src="https://www.superliquidsoccer.ca/wp-content/uploads/2025/09/Soccer-Random-Online.webp" alt="Soccer Random">
-      <div class="overlay">Play</div>
-      <div class="game-title">Soccer Random</div>
-    </a>
-    <a href="chromedino" class="game-tile">
-      <img src="https://preview.redd.it/whats-your-highest-score-in-chrome-dino-v0-z6nz77vy85h81.jpg?width=1080&crop=smart&auto=webp&s=99d613ced2c465d169c6bfa03671937646d1b014" alt="Chrome Dino">
-      <div class="overlay">Play</div>
-      <div class="game-title">Chrome Dino</div>
-    </a>
-    <a href="basketrandom" class="game-tile">
-      <img src="https://i.ytimg.com/vi/x_aLQffXUfw/maxresdefault.jpg" alt="Basketball Random">
-      <div class="overlay">Play</div>
-      <div class="game-title">Basketball Random</div>
-    </a>
-    <a href="crazycattle" class="game-tile">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX74ApFMTfcDasMpkdYEBYD2g17quYgt0Dnw&s" alt="Crazy Cattle 3D">
-      <div class="overlay">Play</div>
-      <div class="game-title">Crazy Cattle 3D</div>
-    </a>
-    <a href="polytrack" class="game-tile">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBSNu0AmRAtGhIsocSF92NDGaSQZCihDlOBQ&s" alt="polytrack">
-      <div class="overlay">Play</div>
-      <div class="game-title">polytrack</div>
-    </a>
-    <a href="flappybird" class="game-tile">
-      <img src="https://img.itch.zone/aW1nLzE2NDA0NTcxLnBuZw==/508x254%23mb/ptK5rH.png" alt="Flappy Bird">
-      <div class="overlay">Play</div>
-      <div class="game-title">Flappy Bird</div>
-    </a>
-    <a href="minecraft1.5.2" class="game-tile">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfjCUYhSDWjYzaM8Yk8EhJWG-Jjfnj0cW6ZA&s" alt="Minecraft 1.5.2">
-      <div class="overlay">Play</div>
-      <div class="game-title">Minecraft 1.5.2</div>
-    </a>
-    <a href="pacman" class="game-tile">
-      <img src="https://lh3.googleusercontent.com/H8hhcUas7f9Pi4aMLTQfSTVk1wwE1d_SPYYGldXn9S8GARJis2ED4EpnIfXzfBhTP8KZM64bFnmgowpU3Ct7b7OznwcRakNOM3mB2KRr=s660" alt="Pac-Man">
-      <div class="overlay">Play</div>
-      <div class="game-title">Pac-Man</div>
-    </a>
-    <a href="snake" class="game-tile">
-      <img src="https://media.dotesports.com/wp-content/uploads/2023/10/snake-game-header.jpg" alt="Snake">
-      <div class="overlay">Play</div>
-      <div class="game-title">Snake</div>
-    </a>
-    <a href="tetris" class="game-tile">
-      <img src="https://user-images.githubusercontent.com/61284764/154609080-7dc112c4-e174-4a02-bf28-7b670019c8dc.png" alt="Tetris">
-      <div class="overlay">Play</div>
-      <div class="game-title">Tetris</div>
-    </a>
-    <a href="volleyrandom" class="game-tile">
-      <img src="https://lh3.googleusercontent.com/OXyQTxEeoMBVzrj0sdNMmVH0uAjUhOZz32N0YYONIjkGKyW8R9jK8yaYArQrXknkUjoUnSXkUtlm9P2wAsxOIeoFgpmAaIcD2_k=h200" alt="Volley Random">
-      <div class="overlay">Play</div>
-      <div class="game-title">Volley Random</div>
-    </a>
-  </div>
+<header>
+  <h1>YingHub</h1>
+  <p>Play games. Discover tools. Have fun.</p>
+</header>
 
-  <footer>
-    <div class="footer">
-      <a href="https://github.com/yangkerrrr/YingHub">Source Code</a> |
-      <a href="https://example.com">Donate BTC</a>
+<h2 class="section-title">Featured</h2>
+
+<div class="game-grid">
+
+  <!-- FEATURED PROMOTION TILE -->
+  <a href="https://yourtoolsite.com" class="featured">
+    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f">
+    <div class="featured-content">
+      <h2>Try My Other Tools 🚀</h2>
+      <p>AI tools, utilities & projects</p>
+      <span>Visit Now</span>
     </div>
-  </footer>
+  </a>
+
+  <!-- NORMAL GAME TILES -->
+  <a href="boxingrandom" class="game-tile">
+    <img src="https://i.ytimg.com/vi/Z1MKjS72IWQ/maxresdefault.jpg">
+    <div class="overlay">PLAY</div>
+    <div class="game-title">Boxing Random</div>
+  </a>
+
+  <a href="soccerrandom" class="game-tile">
+    <img src="https://www.superliquidsoccer.ca/wp-content/uploads/2025/09/Soccer-Random-Online.webp">
+    <div class="overlay">PLAY</div>
+    <div class="game-title">Soccer Random</div>
+  </a>
+
+  <a href="chromedino" class="game-tile">
+    <img src="https://preview.redd.it/whats-your-highest-score-in-chrome-dino-v0-z6nz77vy85h81.jpg">
+    <div class="overlay">PLAY</div>
+    <div class="game-title">Chrome Dino</div>
+  </a>
+
+  <a href="basketrandom" class="game-tile">
+    <img src="https://i.ytimg.com/vi/x_aLQffXUfw/maxresdefault.jpg">
+    <div class="overlay">PLAY</div>
+    <div class="game-title">Basketball Random</div>
+  </a>
+
+</div>
+
+<footer>
+  <a href="https://github.com/yangkerrrr/YingHub">Source Code</a> |
+  <a href="#">Donate BTC</a>
+</footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="The Best website for unblocked games!">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YingHub</title>
+  <link rel="icon" href="resources/favicon.ico">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #102a5e, #020b1f);
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg,#0b1f44,#143b7d);
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      border-bottom: 2px solid #1e90ff;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      color: #8ac4ff;
+      text-shadow: 0 0 15px #1e90ff;
+    }
+
+    header p {
+      color: #cfe6ff;
+      margin-top: 5px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.6rem;
+      margin: 30px 0 10px;
+      color: #7cc3ff;
+      text-shadow: 0 0 8px #1e90ff;
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      padding: 40px;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    /* Featured tile */
+    .featured {
+      grid-column: span 2;
+      grid-row: span 2;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg,#1e90ff,#0b1f44);
+      box-shadow: 0 0 40px rgba(30,144,255,0.7);
+      transition: transform 0.3s;
+      text-decoration: none;
+      color: white;
+    }
+
+    .featured:hover {
+      transform: scale(1.03);
+    }
+
+    .featured img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+
+    .featured-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+      text-align: center;
+      padding: 20px;
+    }
+
+    .featured-content h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .featured-content span {
+      background: #1e90ff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 0 15px #1e90ff;
+    }
+
+    /* Normal tiles */
+    .game-tile {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      background: linear-gradient(145deg,#0e234a,#07132d);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+      transition: all 0.3s ease;
+    }
+
+    .game-tile:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 20px #1e90ff, 0 15px 30px rgba(0,0,0,0.8);
+    }
+
+    .game-tile img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+
+    .game-title {
+      padding: 12px;
+      text-align: center;
+      background: rgba(10,25,60,0.95);
+      font-weight: bold;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30,144,255,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3rem;
+      font-weight: bold;
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    .game-tile:hover .overlay {
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #020b1f;
+      border-top: 2px solid #1e90ff;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #7cc3ff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      color: white;
+      text-shadow: 0 0 10px #1e90ff;
+    }
+
+    @media(max-width:900px){
+      .game-grid{
+        grid-template-columns: repeat(2,1fr);
+      }
+      .featured{
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>YingHub</h1>
+  <p>Play games. Discover tools. Have fun.</p>
+</header>
+
+<h2 class="section-title">Featured</h2>
+
+<div class="game-grid">
+
+  <!-- FEATURED PROMOTION TILE -->
+  <a href="https://yourtoolsite.com" class="featured">
+    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f">
+    <div class="featured-content">
+      <h2>Try My Other Tools 🚀</h2>
+      <p>AI tools, utilities & projects</p>
+      <span>Visit Now</span>
+    </div>
+  </a>
+
+  <!-- NORMAL GAME TILES -->
+  <a href="boxingrandom" class="game-tile">
+    <img src="https://i.ytimg.com/vi/Z1MKjS72IWQ/maxresdefault.jpg">
+    <div class="overlay">PLAY</div>
+    <div class="game-title">Boxing Random</div>
+  </a>
+
+  <a href="soccerrandom" class="game-tile">
+    <img src="https://www.superliquidsoccer.ca/wp-content/uploads/2025/09/Soccer-Random-Online.webp">
+    <div class="overlay">PLAY</div>
+    <div class="game-title">Soccer Random</div>
+  </a>
+
+  <a href="chromedino" class="game-tile">
+    <img src="https://preview.redd.it/whats-your-highest-score-in-chrome-dino-v0-z6nz77vy85h81.jpg">
+    <div class="overlay">PLAY</div>
+    <div class="game-title">Chrome Dino</div>
+  </a>
+
+  <a href="basketrandom" class="game-tile">
+    <img src="https://i.ytimg.com/vi/x_aLQffXUfw/maxresdefault.jpg">
+    <div class="overlay">PLAY</div>
+    <div class="game-title">Basketball Random</div>
+  </a>
+
+</div>
+
+<footer>
+  <a href="https://github.com/yangkerrrr/YingHub">Source Code</a> |
+  <a href="#">Donate BTC</a>
+</footer>
+
 </body>
 </html>
