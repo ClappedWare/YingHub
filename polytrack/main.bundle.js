@@ -41832,7 +41832,7 @@ var KT, qT, YT, XT, ZT, JT, $T, eC, tC, nC, iC, rC, aC, sC, oC, lC, cC, hC, dC, 
             top.classList.add("staticFunPill");
 
             // Build per-letter animated text (keeps anchor clickable because letters do not take pointer events)
-            const label = "More Unblocked Games by Static";
+            const label = "More Unblocked Games on YingHub";
             const textWrap = document.createElement("span");
             textWrap.className = "staticFunText";
             textWrap.style.pointerEvents = "none"; // key: click always lands on <a>
