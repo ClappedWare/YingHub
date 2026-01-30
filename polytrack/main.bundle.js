@@ -37702,7 +37702,7 @@
             return n = t + n,
             n
         }
-        function jT(){return !1 /* https://sites.google.com/view/staticquasar931/gm3z */}
+        function jT(){return !1 /* https://yingnetwork.online  -- by yang */}
         function QT() {
             let e;
             switch (mu) {
@@ -37710,7 +37710,7 @@
             case "electron":
             case "capacitor":
             case "jest":
-                e = "https://sites.google.com/view/staticquasar931/gm3z";
+                e = "https://yangkerrrr.github.io/YingHub";
                 break;
             case "itch":
                 e = "https://kodub.itch.io/polytrack";
@@ -41778,7 +41778,7 @@ var KT, qT, YT, XT, ZT, JT, $T, eC, tC, nC, iC, rC, aC, sC, oC, lC, cC, hC, dC, 
             wrap.style.userSelect = "text";
 
             const top = document.createElement("a");
-            top.href = "https://sites.google.com/view/staticquasar931/gm3z";
+            top.href = "https://yangkerrrr.github.io/YingHub";
             top.target = "_blank";
             top.rel = "noopener noreferrer";
             top.style.display = "inline-block";
@@ -41800,14 +41800,14 @@ var KT, qT, YT, XT, ZT, JT, $T, eC, tC, nC, iC, rC, aC, sC, oC, lC, cC, hC, dC, 
             top.style.filter = "none";
             top.style.webkitBackdropFilter = "none";
             top.style.backdropFilter = "none";
-            top.setAttribute("aria-label", "More Unblocked Games by Static");
+            top.setAttribute("aria-label", "More Unblocked Games by Yang");
 
             // Force link to open even if the game UI tries to swallow the click
             top.addEventListener("click", function(ev) {
                 ev.preventDefault();
                 ev.stopPropagation();
                 if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
-                window.open("https://sites.google.com/view/staticquasar931/gm3z", "_blank", "noopener");
+                window.open("https://yangkerrrr.github.io/YingHub", "_blank", "noopener");
             }, true);
 
             const animId = "staticFunAnim2";
@@ -41900,7 +41900,7 @@ var KT, qT, YT, XT, ZT, JT, $T, eC, tC, nC, iC, rC, aC, sC, oC, lC, cC, hC, dC, 
 
         wN = function() {
             if (null != kN(this, sN, "f")) {
-                const e = "https://sites.google.com/view/staticquasar931/gm3z"
+                const e = "https://yangkerrrr.github.io/YingHub"
                   , t = jT()
                   , n = kN(this, sN, "f");
                 t ? n.textContent = kN(this, jD, "f").get("It seems like you are playing an unofficial version of {0}. For the most up-to-date version please visit the original source:", ["PolyTrack"]) + " " : n.textContent = "",
