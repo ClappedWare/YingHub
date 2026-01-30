@@ -29,54 +29,6 @@
       body{ overflow:hidden; }
 
       /* Static Menu (top-left) */
-      #staticMenu{
-        position:fixed; left:12px; top:12px; z-index:9999;
-        display:flex; gap:10px; align-items:center; user-select:none;
-        padding:10px 14px; border-radius:12px;
-        background:linear-gradient(135deg, rgba(20,20,28,.9), rgba(20,20,28,.6));
-        border:1px solid rgba(94,225,255,.35);
-        color:#e8f3ff; box-shadow:var(--glow), var(--shadow);
-        font-size:14px; animation:menuEnter .6s ease .15s both;
-
-        /* lock menu font so the game UI can't override it */
-        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
-        font-weight: 700 !important;
-        letter-spacing: .1px;
-        text-rendering: geometricPrecision;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-      #staticMenu a{
-        color:#5ee1ff;
-        font-weight:800 !important;
-        text-decoration:none;
-        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
-      }
-      #closeStaticMenu{
-        color:#f55; cursor:pointer; padding:2px 6px; border-radius:6px;
-        border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.06);
-
-        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
-        font-weight: 800 !important;
-      }
-      @keyframes menuEnter{ from{opacity:0; transform:translateY(-8px)} to{opacity:1; transform:translateY(0)} }
-
-      /* Rotating slide-in widget (bottom-right) */
-      #staticSlideMenu{
-        position:fixed; bottom:24px; right:24px; z-index:9999;
-        width:100px; height:100px; pointer-events:none; opacity:0;
-        transform:translateX(140px) scale(.96);
-      }
-      #staticSlideMenu a{ display:block; width:100%; height:100% }
-      #staticSlideMenu img{
-        width:100%; height:100%; object-fit:contain;
-        border:0; border-radius:0; background:transparent; box-shadow:none;
-        transition:opacity .25s ease;
-      }
-      .slide-in{ animation:slideIn 2s ease forwards }
-      .slide-out{ animation:slideOut 2s ease forwards }
-      @keyframes slideIn{ from{opacity:0; transform:translateX(140px) scale(.96)} to{opacity:1; transform:translateX(0) scale(1)} }
-      @keyframes slideOut{ from{opacity:1; transform:translateX(0) scale(1)} to{opacity:0; transform:translateX(140px) scale(.96)} }
 
       /* Hidden SEO helper */
       .seo-hidden{
@@ -99,18 +51,6 @@
     <div id="ui"></div>
     <div id="transition-layer"></div>
 
-    <!-- Static Menu (shows on load, hides 3 minutes when closed, then returns) -->
-    <div id="staticMenu" role="region" aria-label="StaticQuasar menu">
-      <a href="https://sites.google.com/view/staticquasar931/gm3z" target="_blank" rel="noopener">More Unblocked Games by Static</a>
-      <span id="closeStaticMenu" title="Hide temporarily">✕</span>
-    </div>
-
-    <!-- Rotating quick link widget (bottom-right). Order: Google Form → Discord → Instagram -->
-    <div id="staticSlideMenu" aria-live="polite">
-      <a id="staticSlideLink" href="https://sites.google.com/view/staticquasar931/google-form" target="_blank" rel="noopener" aria-label="Open Google Form">
-        <img id="staticSlideImg" src="https://cdn.jsdelivr.net/gh/StaticQuasar931/Images@main/GoogleForm.png" alt="StaticQuasar931 Google Form for feedback and requests">
-      </a>
-    </div>
 
     <script>
       // Leave warning
@@ -139,28 +79,7 @@
         if (btn) btn.onclick = hideFor3m;
       })();
 
-      // Rotator: Google Form → Discord → Instagram
-      (function(){
-        const wrap = document.getElementById("staticSlideMenu");
-        const a    = document.getElementById("staticSlideLink");
-        const img  = document.getElementById("staticSlideImg");
-
-        const FORM = {
-          src:  "https://cdn.jsdelivr.net/gh/StaticQuasar931/Images@main/GoogleForm.png",
-          alt:  "StaticQuasar931 Google Form for feedback and requests",
-          link: "https://sites.google.com/view/staticquasar931/google-form"
-        };
-        const DISCORD = {
-          src:  "https://cdn.jsdelivr.net/gh/StaticQuasar931/Images@main/Join_Our_DC_StaticQuassar931_lcplrf.png",
-          alt:  "Join the StaticQuasar931 Discord",
-          link: "https://discord.gg/DP2hM7RRhR"
-        };
-        const INSTA = {
-          src:  "https://cdn.jsdelivr.net/gh/StaticQuasar931/Images@main/Follow-us--IG",
-          alt:  "StaticQuasar931 Instagram",
-          link: "https://www.instagram.com/freeschoolgamepage/"
-        };
-        const ROTATION = [FORM, DISCORD, INSTA];
+      // Rotator: Google Form → Discord → Instagra
 
         // Preload
         ROTATION.forEach(o => { const p = new Image(); p.src = o.src; });
