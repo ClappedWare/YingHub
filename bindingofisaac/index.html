@@ -44,7 +44,9 @@
         const container = document.getElementById("container");
         container.appendChild(player);
         player.ruffle().load("movie.swf");
-		window.RufflePlayer = window.RufflePlayer || {};
+        player.style.width = "100%";
+        player.style.height = "100%";
+    });
 </script>
 <script src="TheBindingofIsaac.swf"></script>
 </body>
