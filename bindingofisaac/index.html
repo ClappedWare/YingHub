@@ -45,48 +45,6 @@
         container.appendChild(player);
         player.ruffle().load("movie.swf");
 		window.RufflePlayer = window.RufflePlayer || {};
-window.RufflePlayer.config = {
-    // Merge with any existing config, such as the user's extension config. Options you set below will have priority.
-    ...window.RufflePlayer.config,
-
-    // Options affecting the whole page
-    "publicPath": undefined,
-    "polyfills": true,
-
-    // Options affecting files only
-    "allowScriptAccess": false, // Polyfill elements have a different default value, see the allowScriptAccess section
-    "autoplay": "auto",
-    "unmuteOverlay": "visible",
-    "backgroundColor": null,
-    "wmode": "window",
-    "letterbox": "fullscreen",
-    "warnOnUnsupportedContent": true,
-    "contextMenu": "on",
-    "showSwfDownload": false,
-    "upgradeToHttps": window.location.protocol === "https:",
-    "maxExecutionDuration": 15,
-    "logLevel": "error",
-    "base": null,
-    "menu": true,
-    "salign": "",
-    "forceAlign": false,
-    "scale": "exactfit",
-    "forceScale": false,
-    "frameRate": null,
-    "quality": "high",
-    "splashScreen": true,
-    "preferredRenderer": null,
-    "openUrlMode": "allow",
-    "allowNetworking": "all",
-    "favorFlash": true,
-    "socketProxy": [],
-    "fontSources": [],
-    "defaultFonts": {},
-    "credentialAllowList": [],
-    "playerRuntime": "flashPlayer",
-    "allowFullscreen": true,
-    "fullScreenAspectRatio": "",
-};
 </script>
 <script src="TheBindingofIsaac.swf"></script>
 </body>
