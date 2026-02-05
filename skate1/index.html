@@ -50,6 +50,8 @@ getParts("asd.js", 0, 100)
     </script>
     <style>
       body,
+
+      
       html {
         margin: 0;
         padding: 0;
@@ -61,6 +63,15 @@ getParts("asd.js", 0, 100)
         background-color: #121212;
         color: white;
         font-family: Arial, sans-serif;
+      }
+      #truffled-logo {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 330px;
+    height: 150px;
+    cursor: pointer;
+    z-index: 9999;
       }
       #game-container {
         text-align: center;
@@ -78,6 +89,9 @@ getParts("asd.js", 0, 100)
     </style>
   </head>
   <body>
+    <a href="https://yangkerrrr.github.io/YingHub/" target="_blank">
+    <img id="truffled-logo" src="/YingHub/media/yingnetwork(455x207).png" alt="Logo">
+</a>
     <div id="game-container">
       <div id="game"></div>
       <div id="loading-progress">Loading: 0/0</div>
