@@ -28,10 +28,10 @@ canvas {
 	color: black;
 }
 
-#truffled-logo {
+#ying-logo {
     position: fixed;
     bottom: 10px;
-    right: 10px;
+    right: 45%;
     width: 165px;
     height: 75px;
     cursor: pointer;
