@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Geography Homework</title>
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<iframe id="gameFrame"></iframe>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const dir = params.get("dir");
+
+  const allowedBase = "games/";
+
+  if (!dir) {
+    document.body.innerHTML = "<h2 style='color:white'>No game specified</h2>";
+  } else if (!dir.startsWith(allowedBase) || dir.includes("..")) {
+    document.body.innerHTML = "<h2 style='color:red'>Invalid game path</h2>";
+  } else {
+    document.getElementById("gameFrame").src = dir + "/index.html";
+  }
+</script>
+
+</body>
+</html>
