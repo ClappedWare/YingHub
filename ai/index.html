@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ying AI</title>
+
+<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: url("space.jpg") no-repeat center/cover;
+  font-family: "Segoe UI", sans-serif;
+  color: white;
+}
+
+/* TOP NAVBAR */
+.navbar-wrapper {
+  position: fixed;
+  top: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.navbar {
+  background: linear-gradient(135deg, #0b1fff, #007bff);
+  border-radius: 999px;
+  padding: 10px 30px;
+  display: flex;
+  gap: 22px;
+  box-shadow: 0 8px 25px rgba(0,123,255,0.5);
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  gap: 6px;
+  font-size: 14px;
+}
+
+/* AI PANEL */
+.ai-container {
+  margin: 90px auto;
+  width: 80%;
+  max-width: 1000px;
+  height: 75vh;
+  background: rgba(0, 40, 120, 0.85);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 25px rgba(0,123,255,0.6);
+}
+
+/* HEADER */
+.ai-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ai-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ai-title i {
+  background: #004cff;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+/* CHAT AREA */
+.chat-area {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* MESSAGE */
+.message {
+  background: rgba(255,255,255,0.1);
+  padding: 12px 16px;
+  border-radius: 12px;
+  max-width: 70%;
+  margin-bottom: 10px;
+}
+
+/* INPUT */
+.input-area {
+  padding: 15px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  gap: 10px;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 12px 15px;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+}
+
+.input-area button {
+  background: #004cff;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar-wrapper">
+  <div class="navbar">
+    <a class="nav-item"><i class="fa fa-house"></i> Home</a>
+    <a class="nav-item"><i class="fa fa-gamepad"></i> Games</a>
+    <a class="nav-item"><i class="fa fa-robot"></i> AI</a>
+    <a class="nav-item"><i class="fa fa-grid"></i> Apps</a>
+    <a class="nav-item"><i class="fa fa-gear"></i> Settings</a>
+    <a class="nav-item"><i class="fa fa-plus"></i> More</a>
+  </div>
+</div>
+
+<!-- AI PANEL -->
+<div class="ai-container">
+
+  <div class="ai-header">
+    <div class="ai-title">
+      <i class="fa fa-robot"></i>
+      <div>
+        <strong>Ying AI</strong><br>
+        <small>Your intelligent assistant</small>
+      </div>
+    </div>
+
+    <select>
+      <option>GPT-OSS-20B</option>
+      <option>More soon!</option>
+    </select>
+  </div>
+
+  <div class="chat-area" id="chat">
+    <div class="message">
+      Hello! I'm Ying AI. How can I help you today?
+    </div>
+  </div>
+
+  <div class="input-area">
+    <input id="input" placeholder="Type your message...">
+    <button onclick="sendMessage()"><i class="fa fa-paper-plane"></i></button>
+  </div>
+
+</div>
+
+<script>
+async function sendMessage() {
+  const input = document.getElementById("input");
+  const chat = document.getElementById("chat");
+
+  if (!input.value) return;
+
+  const userMsg = document.createElement("div");
+  userMsg.className = "message";
+  userMsg.textContent = input.value;
+  chat.appendChild(userMsg);
+
+  const res = await fetch("http://67.217.243.187:5000/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: input.value })
+  });
+
+  const data = await res.json();
+
+  const botMsg = document.createElement("div");
+  botMsg.className = "message";
+  botMsg.textContent = data.reply;
+  chat.appendChild(botMsg);
+
+  input.value = "";
+}
+</script>
+
+
+</body>
+</html>

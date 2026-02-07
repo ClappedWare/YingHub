@@ -1,126 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Geography Homework</title>
+<meta charset="UTF-8">
+<title>Geography Homework</title>
 
-  <style>
-    html, body {
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
-      font-family: Arial, sans-serif;
-    }
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
 
-    /* NAVBAR */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 50px;
-      background: #111;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 15px;
-      z-index: 10000;
-      border-bottom: 1px solid #333;
-    }
+<style>
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
 
-    .navbar .logo {
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 18px;
-    }
 
-    .navbar ul {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-      margin: 0;
-      padding: 0;
-    }
+.navbar-wrapper {
+  position: fixed;
+  top: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10000;
+}
 
-    .navbar ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-    }
 
-    .navbar ul li a:hover {
-      color: #00bfff;
-    }
+.navbar {
+  background: linear-gradient(135deg, #0b1fff, #007bff);
+  border-radius: 999px;
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.45);
+}
 
-    .panic-btn {
-      color: red;
-      font-weight: bold;
-    }
+.nav-item {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
 
-    /* LOGO BUTTON */
-    #ying-logo {
-      position: fixed;
-      bottom: 10px;
-      right: 45%;
-      width: 165px;
-      height: 75px;
-      cursor: pointer;
-      z-index: 9999;
-    }
+.nav-item i {
+  font-size: 14px;
+}
 
-    /* IFRAME */
-    iframe {
-      position: absolute;
-      top: 50px; /* below navbar */
-      width: 100%;
-      height: calc(100% - 50px);
-      border: none;
-    }
-  </style>
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-1px);
+}
+
+.nav-logo {
+  font-weight: 600;
+  padding-right: 18px;
+  border-right: 1px solid rgba(255,255,255,0.25);
+}
+
+
+
+iframe {
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  height: calc(100% - 70px);
+  border: none;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+<div class="navbar-wrapper">
   <div class="navbar">
-    <a href="https://yangkerrrr.github.io/YingHub/" class="logo">Ying Hub</a>
 
-    <ul>
-      <li><a href="https://yangkerrrr.github.io/YingHub/">Home</a></li>
-      <li><a href="https://yangkerrrr.github.io/YingHub/games.html">Games</a></li>
-      <li><a href="https://github.com/yangkerrrr/YingHub" target="_blank">GitHub</a></li>
-      <li><a href="#" class="panic-btn" onclick="panic()">Panic</a></li>
-    </ul>
+    <a class="nav-item nav-logo" href="https://yangkerrrr.github.io/YingHub/">
+      <i class="fa-solid fa-moon"></i> YingHub
+    </a>
+
+    <a class="nav-item" href="https://yangkerrrr.github.io/YingHub/">
+      <i class="fa-solid fa-house"></i> Home
+    </a>
+
+    <a class="nav-item" href="https://yangkerrrr.github.io/YingHub/games.html">
+      <i class="fa-solid fa-gamepad"></i> Games
+    </a>
+
+    <a class="nav-item" href="https://yangkerrrr.github.io/YingHub/ai">
+      <i class="fa-solid fa-robot"></i> AI
+    </a>
+
+    <a class="nav-item" href="#">
+      <i class="fas fa-grid-2"></i> Apps
+    </a>
+
+    <a class="nav-item" href="#">
+      <i class="fa-solid fa-gear"></i> Settings
+    </a>
+
+    <a class="nav-item" href="#">
+      <i class="fa-solid fa-plus"></i> More
+    </a>
+
   </div>
+</div>
 
-  <!-- LOGO -->
-  <a href="https://yangkerrrr.github.io/YingHub/" target="_blank">
-    <img id="ying-logo" src="/YingHub/media/yingnetwork(455x207).png" alt="Logo">
-  </a>
 
-  <!-- GAME FRAME -->
-  <iframe id="gameFrame"></iframe>
+<iframe id="gameFrame"></iframe>
 
-  <script>
-    function panic() {
-      window.location.href = "https://google.com";
-    }
+<script>
+const params = new URLSearchParams(window.location.search);
+const dir = params.get("dir");
 
-    const params = new URLSearchParams(window.location.search);
-    const dir = params.get("dir");
+const allowedBase = "game/";
 
-    const allowedBase = "game/";
-
-    if (!dir) {
-      document.body.innerHTML = "<h2 style='color:white'>No game specified</h2>";
-    } else if (!dir.startsWith(allowedBase) || dir.includes("..")) {
-      document.body.innerHTML = "<h2 style='color:red'>Invalid game path</h2>";
-    } else {
-      document.getElementById("gameFrame").src = dir + "/index.html";
-    }
-  </script>
+if (!dir) {
+  document.body.innerHTML = "<h2 style='color:white'>No game specified</h2>";
+} else if (!dir.startsWith(allowedBase) || dir.includes("..")) {
+  document.body.innerHTML = "<h2 style='color:red'>Invalid game path</h2>";
+} else {
+  document.getElementById("gameFrame").src = dir + "/index.html";
+}
+</script>
 
 </body>
 </html>
