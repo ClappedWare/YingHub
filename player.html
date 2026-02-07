@@ -3,51 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <title>Geography Homework</title>
+
   <style>
     html, body {
       margin: 0;
       width: 100%;
       height: 100%;
       background: black;
-    }
-    #ying-logo {
-    position: fixed;
-    bottom: 10px;
-    right: 45%;
-    width: 165px;
-    height: 75px;
-    cursor: pointer;
-    z-index: 9999;
+      font-family: Arial, sans-serif;
     }
 
-    iframe {
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 100%;
+      height: 50px;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+      z-index: 10000;
+      border-bottom: 1px solid #333;
+    }
+
+    .navbar .logo {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .navbar ul li a:hover {
+      color: #00bfff;
+    }
+
+    .panic-btn {
+      color: red;
+      font-weight: bold;
+    }
+
+    /* LOGO BUTTON */
+    #ying-logo {
+      position: fixed;
+      bottom: 10px;
+      right: 45%;
+      width: 165px;
+      height: 75px;
+      cursor: pointer;
+      z-index: 9999;
+    }
+
+    /* IFRAME */
+    iframe {
+      position: absolute;
+      top: 50px; /* below navbar */
+      width: 100%;
+      height: calc(100% - 50px);
       border: none;
     }
   </style>
 </head>
+
 <body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <a href="https://yangkerrrr.github.io/YingHub/" class="logo">Ying Hub</a>
+
+    <ul>
+      <li><a href="https://yangkerrrr.github.io/YingHub/">Home</a></li>
+      <li><a href="https://yangkerrrr.github.io/YingHub/games.html">Games</a></li>
+      <li><a href="https://github.com/yangkerrrr/YingHub" target="_blank">GitHub</a></li>
+      <li><a href="#" class="panic-btn" onclick="panic()">Panic</a></li>
+    </ul>
+  </div>
+
+  <!-- LOGO -->
   <a href="https://yangkerrrr.github.io/YingHub/" target="_blank">
     <img id="ying-logo" src="/YingHub/media/yingnetwork(455x207).png" alt="Logo">
-</a>
+  </a>
 
-<iframe id="gameFrame"></iframe>
+  <!-- GAME FRAME -->
+  <iframe id="gameFrame"></iframe>
 
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const dir = params.get("dir");
+  <script>
+    function panic() {
+      window.location.href = "https://google.com";
+    }
 
-  const allowedBase = "game/";
+    const params = new URLSearchParams(window.location.search);
+    const dir = params.get("dir");
 
-  if (!dir) {
-    document.body.innerHTML = "<h2 style='color:white'>No game specified</h2>";
-  } else if (!dir.startsWith(allowedBase) || dir.includes("..")) {
-    document.body.innerHTML = "<h2 style='color:red'>Invalid game path</h2>";
-  } else {
-    document.getElementById("gameFrame").src = dir + "/index.html";
-  }
-</script>
+    const allowedBase = "game/";
+
+    if (!dir) {
+      document.body.innerHTML = "<h2 style='color:white'>No game specified</h2>";
+    } else if (!dir.startsWith(allowedBase) || dir.includes("..")) {
+      document.body.innerHTML = "<h2 style='color:red'>Invalid game path</h2>";
+    } else {
+      document.getElementById("gameFrame").src = dir + "/index.html";
+    }
+  </script>
 
 </body>
 </html>
