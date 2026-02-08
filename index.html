@@ -19,6 +19,7 @@
   <meta property="og:url" content="https://yingnetwork.online/YingHub">
   <meta property="og:image" content="https://images.unsplash.com/photo-1550745165-9bc0b252726f">
 
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
   <link rel="icon" href="resources/favicon.ico">
 
   <!-- Google Analytics -->
@@ -55,25 +56,53 @@
       min-height: 100vh;
     }
 
-    header {
-      background: linear-gradient(135deg,#0b1f44,#143b7d);
-      padding: 25px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      border-bottom: 2px solid #1e90ff;
-    }
+    .navbar-wrapper {
+  position: fixed;
+  top: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10000;
+}
 
-    header h1 {
-      font-size: 2.8rem;
-      letter-spacing: 2px;
-      color: #8ac4ff;
-      text-shadow: 0 0 15px #1e90ff;
-    }
 
-    header p {
-      color: #cfe6ff;
-      margin-top: 5px;
-    }
+.navbar {
+  background: linear-gradient(135deg, #0b1fff, #007bff);
+  border-radius: 999px;
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.45);
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.nav-item i {
+  font-size: 14px;
+}
+
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-1px);
+}
+
+.nav-logo {
+  font-weight: 600;
+  padding-right: 18px;
+  border-right: 1px solid rgba(255,255,255,0.25);
+}
 
     .section-title {
       text-align: center;
@@ -228,10 +257,32 @@
 
 <body>
 
-<header>
-  <h1>YingHub</h1>
-  <p>Play the best unblocked games online</p>
-</header>
+<div class="navbar-wrapper">
+  <div class="navbar">
+
+    <a class="nav-item nav-logo" href="https://yangkerrrr.github.io/YingHub/">
+      <i class="fa-solid fa-moon"></i> YingHub
+    </a>
+
+    <a class="nav-item" href="https://yangkerrrr.github.io/YingHub/games.html">
+      <i class="fa-solid fa-gamepad"></i> Games
+    </a>
+
+    <a class="nav-item" href="https://yangkerrrr.github.io/YingHub/ai">
+      <i class="fa-solid fa-robot"></i> AI
+    </a>
+
+    <a class="nav-item" href="#">
+      <i class="fas fa-grid-2"></i> Apps
+    </a>
+
+    <a class="nav-item" href="#">
+      <i class="fa-solid fa-gear"></i> Settings
+    </a>
+
+
+  </div>
+</div>
 
 <h2 class="section-title">Featured</h2>
 
